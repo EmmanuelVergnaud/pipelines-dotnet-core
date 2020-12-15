@@ -18,6 +18,13 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+  - task: DownloadGitHubRelease@0
+    inputs:
+      connection: 'EmmanuelVergnaud'
+      userRepository: 'https://github.com/EmmanuelVergnaud/pipelines-dotnet-core.git'
+      defaultVersionType: 'latest'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
